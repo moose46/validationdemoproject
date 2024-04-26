@@ -39,8 +39,8 @@ class UserRegistrationForm(forms.ModelForm):
     # Field level validations
     def clean_phone_number(self):
         if iphonenumber := self.cleaned_data.get("phone_number"):
-            # pattern = re.compile(f"(0|91)?[6-9][0-9]{9}")
-            pattern = re.compile("^(([0-9]{3}) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$")
+            # pattern = re.compile(r"(0|91)?[6-9][0-9]{9}")
+            pattern = re.compile(r"^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$")
             if not re.fullmatch(pattern, iphonenumber):
                 raise forms.ValidationError(
                     "Invalid Phone Number! Example: +911234567891"
