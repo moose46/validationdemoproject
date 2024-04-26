@@ -20,7 +20,11 @@ def validate_favwebsiteurl(iurl):
 class UserRegistration(models.Model):
     # username = models.CharField(max_length=15, verbose_name="User Name")
     username = models.CharField(
-        max_length=15, verbose_name="User Name", validators=[MinLengthValidator(5)]
+        max_length=15,
+        verbose_name="User Name",
+        validators=[
+            MinLengthValidator(5, "Min Length of User Name is 5 Letters, bozo")
+        ],
     )
 
     # password = models.CharField(max_length=15, verbose_name="Password")
